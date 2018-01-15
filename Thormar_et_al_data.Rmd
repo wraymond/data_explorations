@@ -1,0 +1,40 @@
+---
+title: "Thormar_et_al_data"
+author: "Wendel Raymond"
+date: "January 15, 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Exploring data from Thormar et al 2016
+Paper examines trophic relationships in eelgrass beds in Denmark. Available from [PLoS ONE](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146479).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(DT)
+```
+
+
+## Data
+Data is available throgh [Dryad](http://datadryad.org/resource/doi:10.5061/dryad.4jr00).
+```{r}
+si.dat <- read.csv("../all_data/Thormar_Stable_Isotopes.csv", header = TRUE, stringsAsFactors = FALSE)
+si.dat <- si.dat[,1:5]
+```
+
+Quick look
+```{r}
+DT::datatable(si.dat)
+str(si.dat)
+```
+
+## Species List
+How many species did they collect?
+```{r}
+unique(si.dat$Species.name)
+unique(si.dat$Taxonomic.Group)
+```
+
+
